@@ -17,48 +17,21 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 //<<< DDD / Aggregate Root
 public class LostService  {
 
-
-    
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    
-    
-    
-    
     private Long id;
-    
-    
-    
-    
+
     private Long customerId;
-    
-    
-    
-    
+
     private Long customerPhoneId;
-    
-    
-    
-    
+
     private String customerName;
-    
-    
-    
-    
+
     private String phoneNumber;
-    
-    
-    
-    
+
     private Date lostDate;
-    
-    
-    
-    
+
     private Date foundDate;
-    
-    
-    
     
     private Integer status;
 
@@ -68,21 +41,26 @@ public class LostService  {
         return lostServiceRepository;
     }
 
-
-
-//<<< Clean Arch / Port Method
     public void lost(LostCommand lostCommand){
         
-        //implement business logic here:
+        PhoneLost phoneLost = new PhoneLost();
+    
+        // LostCommand의 데이터 매핑
+        phoneLost.setCustomerId(lostCommand.getCustomerId());
+        phoneLost.setCustomerPhoneId(lostCommand.getCustomerPhoneId());
+        phoneLost.setCustomerName(lostCommand.getCustomerName());
+        phoneLost.setPhoneNumber(lostCommand.getPhoneNumber());
+        phoneLost.setLostDate(lostCommand.getLostDate());
         
-
-        // Customer customer = LostServiceApplication.applicationContext
-        //     .getBean(untitled.external.CustomerService.class);
-        //     //.customerInfo(get??);
-
-        PhoneLost phoneLost = new PhoneLost(this);
+        // 필요한 추가 작업 후 메시지 발행
         phoneLost.publishAfterCommit();
+        
+        // // Customer customer = LostServiceApplication.applicationContext
+        // //     .getBean(untitled.external.CustomerService.class);
+        // //     //.customerInfo(get??);
     }
+
+
 //>>> Clean Arch / Port Method
 //<<< Clean Arch / Port Method
 //     public void cancel(CancelCommand cancelCommand){
