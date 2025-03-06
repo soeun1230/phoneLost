@@ -51,6 +51,7 @@ public class LostService  {
         phoneLost.setCustomerName(lostCommand.getCustomerName());
         phoneLost.setPhoneNumber(lostCommand.getPhoneNumber());
         phoneLost.setLostDate(lostCommand.getLostDate());
+        phoneLost.setStatus(1);
         
         // 필요한 추가 작업 후 메시지 발행
         phoneLost.publishAfterCommit();
