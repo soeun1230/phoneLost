@@ -37,45 +37,45 @@ public class LostServiceController {
         return lostService;
     }
 
-    @RequestMapping(
-        value = "/lostServices/{id}/cancel",
-        method = RequestMethod.PUT,
-        produces = "application/json;charset=UTF-8"
-    )
-    public LostService cancel(
-        @PathVariable(value = "id") Long id,
-        @RequestBody CancelCommand cancelCommand,
-        HttpServletRequest request,
-        HttpServletResponse response
-    ) throws Exception {
-        System.out.println("##### /lostService/cancel  called #####");
-        Optional<LostService> optionalLostService = lostServiceRepository.findById(
-            id
-        );
+    // @RequestMapping(
+    //     value = "/lostServices/{id}/cancel",
+    //     method = RequestMethod.PUT,
+    //     produces = "application/json;charset=UTF-8"
+    // )
+    // public LostService cancel(
+    //     @PathVariable(value = "id") Long id,
+    //     @RequestBody CancelCommand cancelCommand,
+    //     HttpServletRequest request,
+    //     HttpServletResponse response
+    // ) throws Exception {
+    //     System.out.println("##### /lostService/cancel  called #####");
+    //     Optional<LostService> optionalLostService = lostServiceRepository.findById(
+    //         id
+    //     );
 
-        optionalLostService.orElseThrow(() -> new Exception("No Entity Found"));
-        LostService lostService = optionalLostService.get();
-        lostService.cancel(cancelCommand);
+    //     optionalLostService.orElseThrow(() -> new Exception("No Entity Found"));
+    //     LostService lostService = optionalLostService.get();
+    //     lostService.cancel(cancelCommand);
 
-        lostServiceRepository.save(lostService);
-        return lostService;
-    }
+    //     lostServiceRepository.save(lostService);
+    //     return lostService;
+    // }
 
-    @RequestMapping(
-        value = "/lostServices/phonelocation",
-        method = RequestMethod.POST,
-        produces = "application/json;charset=UTF-8"
-    )
-    public LostService phoneLocation(
-        HttpServletRequest request,
-        HttpServletResponse response,
-        @RequestBody PhoneLocationCommand phoneLocationCommand
-    ) throws Exception {
-        System.out.println("##### /lostService/phoneLocation  called #####");
-        LostService lostService = new LostService();
-        lostService.phoneLocation(phoneLocationCommand);
-        lostServiceRepository.save(lostService);
-        return lostService;
-    }
+    // @RequestMapping(
+    //     value = "/lostServices/phonelocation",
+    //     method = RequestMethod.POST,
+    //     produces = "application/json;charset=UTF-8"
+    // )
+    // public LostService phoneLocation(
+    //     HttpServletRequest request,
+    //     HttpServletResponse response,
+    //     @RequestBody PhoneLocationCommand phoneLocationCommand
+    // ) throws Exception {
+    //     System.out.println("##### /lostService/phoneLocation  called #####");
+    //     LostService lostService = new LostService();
+    //     lostService.phoneLocation(phoneLocationCommand);
+    //     lostServiceRepository.save(lostService);
+    //     return lostService;
+    // }
 }
 //>>> Clean Arch / Inbound Adaptor

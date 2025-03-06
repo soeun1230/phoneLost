@@ -76,41 +76,41 @@ public class LostService  {
         //implement business logic here:
         
 
-        Customer customer = LostServiceApplication.applicationContext
-            .getBean(untitled.external.CustomerService.class)
-            .customerInfo(get??);
+        // Customer customer = LostServiceApplication.applicationContext
+        //     .getBean(untitled.external.CustomerService.class);
+        //     //.customerInfo(get??);
 
         PhoneLost phoneLost = new PhoneLost(this);
         phoneLost.publishAfterCommit();
     }
 //>>> Clean Arch / Port Method
 //<<< Clean Arch / Port Method
-    public void cancel(CancelCommand cancelCommand){
+//     public void cancel(CancelCommand cancelCommand){
         
-        //implement business logic here:
-        
-
-        Customer customer = LostServiceApplication.applicationContext
-            .getBean(untitled.external.CustomerService.class)
-            .customerInfo(get??);
-
-        CanceledPhoneLost canceledPhoneLost = new CanceledPhoneLost(this);
-        canceledPhoneLost.publishAfterCommit();
-    }
-//>>> Clean Arch / Port Method
-//<<< Clean Arch / Port Method
-    public void phoneLocation(PhoneLocationCommand phoneLocationCommand){
-        
-        //implement business logic here:
+//         //implement business logic here:
         
 
-        CustomerPhone customerPhone = LostServiceApplication.applicationContext
-            .getBean(untitled.external.CustomerPhoneService.class)
-            .phoneStatus(get??);
+//         Customer customer = LostServiceApplication.applicationContext
+//             .getBean(untitled.external.CustomerService.class)
+//             .customerInfo(get??);
 
-        LocationProvided locationProvided = new LocationProvided(this);
-        locationProvided.publishAfterCommit();
-    }
+//         CanceledPhoneLost canceledPhoneLost = new CanceledPhoneLost(this);
+//         canceledPhoneLost.publishAfterCommit();
+//     }
+// //>>> Clean Arch / Port Method
+// //<<< Clean Arch / Port Method
+//     public void phoneLocation(PhoneLocationCommand phoneLocationCommand){
+        
+//         //implement business logic here:
+        
+
+//         CustomerPhone customerPhone = LostServiceApplication.applicationContext
+//             .getBean(untitled.external.CustomerPhoneService.class)
+//             .phoneStatus(get??);
+
+//         LocationProvided locationProvided = new LocationProvided(this);
+//         locationProvided.publishAfterCommit();
+//     }
 //>>> Clean Arch / Port Method
 
 
