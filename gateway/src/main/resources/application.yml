@@ -1,0 +1,92 @@
+server:
+  port: 8088
+
+---
+
+spring:
+  profiles: default
+  cloud:
+    gateway:
+#<<< API Gateway / Routes
+      routes:
+        - id: lost
+          uri: http://localhost:8082
+          predicates:
+            - Path=/lostServices/**, 
+        - id: rent
+          uri: http://localhost:8083
+          predicates:
+            - Path=/rentServices/**, 
+        - id: customerphone
+          uri: http://localhost:8084
+          predicates:
+            - Path=/customerPhones/**, /phoneStatuses/**
+        - id: customer
+          uri: http://localhost:8085
+          predicates:
+            - Path=/customers/**, /customerInfos/**
+        - id: rentphone
+          uri: http://localhost:8086
+          predicates:
+            - Path=/rentPhones/**, /possibleRentPhones/**
+        - id: frontend
+          uri: http://localhost:8080
+          predicates:
+            - Path=/**
+#>>> API Gateway / Routes
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+
+---
+
+spring:
+  profiles: docker
+  cloud:
+    gateway:
+      routes:
+        - id: lost
+          uri: http://lost:8080
+          predicates:
+            - Path=/lostServices/**, 
+        - id: rent
+          uri: http://rent:8080
+          predicates:
+            - Path=/rentServices/**, 
+        - id: customerphone
+          uri: http://customerphone:8080
+          predicates:
+            - Path=/customerPhones/**, 
+        - id: customer
+          uri: http://customer:8080
+          predicates:
+            - Path=/customers/**, 
+        - id: rentphone
+          uri: http://rentphone:8080
+          predicates:
+            - Path=/rentPhones/**, 
+        - id: frontend
+          uri: http://frontend:8080
+          predicates:
+            - Path=/**
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "*"
+            allowedMethods:
+              - "*"
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
+server:
+  port: 8080
